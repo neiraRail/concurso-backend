@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.http402</groupId>
-	<artifactId>concurso_sivi</artifactId>
+	<artifactId>concurso-sivi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>concurso-sivi</name>
-	<description>Competencia SIVI</description>
+	<description>Consurso sivi</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
