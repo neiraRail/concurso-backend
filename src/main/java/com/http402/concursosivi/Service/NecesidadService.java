@@ -50,5 +50,9 @@ public class NecesidadService {
     public void deleteNecesidad(Long id) {
         necesidadRepository.deleteById(id);
     }
+
+    public void saveAll(List<NecesidadDataEntity> necesidades) {
+        necesidadRepository.saveAll(necesidades);
+    }
 }
 
