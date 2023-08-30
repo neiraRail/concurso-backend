@@ -1,5 +1,7 @@
 package com.http402.concursosivi;
 
+import com.http402.concursosivi.Entity.NecesidadDataEntity;
+import com.http402.concursosivi.Service.NecesidadService;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class Preload implements CommandLineRunner {
@@ -23,8 +26,8 @@ public class Preload implements CommandLineRunner {
         service.saveAll(entities);
     }
 
-    private List<YourEntity> parseCSVFile(String csvFilePath) throws IOException {
-        List<YourEntity> entities = new ArrayList<>();
+    private List<NecesidadDataEntity> parseCSVFile(String csvFilePath) throws IOException {
+        List<NecesidadDataEntity> entities = new ArrayList<>();
 
         try (CSVReader reader = new CSVReaderBuilder(new FileReader(csvFilePath)).withSkipLines(1).build()) {
             String[] line;
