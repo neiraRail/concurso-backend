@@ -54,5 +54,9 @@ public class NecesidadService {
     public void saveAll(List<NecesidadDataEntity> necesidades) {
         necesidadRepository.saveAll(necesidades);
     }
+
+    public void deleteAllNecesidades(){
+        necesidadRepository.deleteAll();
+    }
 }
 
