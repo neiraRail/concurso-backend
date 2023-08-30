@@ -58,5 +58,12 @@ public class NecesidadService {
     public void deleteAllNecesidades(){
         necesidadRepository.deleteAll();
     }
+    public List<NecesidadDataEntity> getNecesidadesByStart(int startIndex, int pageSize) {
+        return necesidadRepository.findNecesidadesByStart(startIndex, pageSize);
+    }
+    public List<String> getAllPalabrasClave() {
+        return necesidadRepository.findAllPalabrasClave();
+    }
+
 }
 

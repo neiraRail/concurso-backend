@@ -4,7 +4,10 @@ import com.http402.concursosivi.Service.NecesidadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/necesidad")
@@ -40,6 +43,38 @@ public class NecesidadController {
     public void deleteAll(){
         necesidadService.deleteAllNecesidades();
     }
+    @GetMapping("/pagination/{start}")
+    public List<NecesidadDataEntity> getNecesidadesByStart(@PathVariable int start) {
+        int pageSize = 12; // Tamaño de la página
+        int startIndex = start - 1;
 
+        List<NecesidadDataEntity> necesidades = necesidadService.getNecesidadesByStart(startIndex, pageSize);
+
+        return necesidades;
+    }
+    @GetMapping("/palabras-clave")
+    public Map<String, Integer> getPalabrasClaveMasRepetidas() {
+        List<String> palabrasClave = necesidadService.getAllPalabrasClave();
+
+        // Contar las repeticiones de las palabras clave
+        Map<String, Integer> repeticiones = new HashMap<>();
+        for (String palabras : palabrasClave) {
+            String[] palabrasIndividuales = palabras.split("\\*"); // Separar las palabras clave
+            for (String palabraClave : palabrasIndividuales) {
+                repeticiones.put(palabraClave, repeticiones.getOrDefault(palabraClave, 0) + 1);
+            }
+        }
+
+        // Seleccionar las palabras clave más repetidas (pueden ser las 10 más repetidas, por ejemplo)
+        Map<String, Integer> palabrasClaveMasRepetidas = repeticiones.entrySet().stream()
+                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) // Ordenar por repeticiones descendentes
+                .limit(10) // Limitar a las 10 más repetidas
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey, // Palabra clave
+                        Map.Entry::getValue // Cantidad de repeticiones
+                ));
+
+        return palabrasClaveMasRepetidas;
+    }
 
 }
