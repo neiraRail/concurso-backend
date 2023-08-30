@@ -68,7 +68,7 @@ public class NecesidadController {
         // Seleccionar las palabras clave más repetidas (pueden ser las 10 más repetidas, por ejemplo)
         Map<String, Integer> palabrasClaveMasRepetidas = repeticiones.entrySet().stream()
                 .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) // Ordenar por repeticiones descendentes
-                .limit(10) // Limitar a las 10 más repetidas
+                .limit(20) // Limitar a las 10 más repetidas
                 .collect(Collectors.toMap(
                         Map.Entry::getKey, // Palabra clave
                         Map.Entry::getValue // Cantidad de repeticiones
