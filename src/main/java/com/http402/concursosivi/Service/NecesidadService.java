@@ -64,6 +64,15 @@ public class NecesidadService {
     public List<String> getAllPalabrasClave() {
         return necesidadRepository.findAllPalabrasClave();
     }
+    public void incrementarVisita(Long id) {
+        NecesidadDataEntity necesidad = necesidadRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Necesidad no encontrada"));
+
+        int numVisitaActual = necesidad.getNumVisita();
+        necesidad.setNumVisita(numVisitaActual + 1);
+
+        necesidadRepository.save(necesidad);
+    }
 
 }
 

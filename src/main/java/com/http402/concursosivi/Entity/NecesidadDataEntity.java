@@ -19,7 +19,15 @@ public class NecesidadDataEntity {
     private String comuna;
     private String palabrasClave;
     private String objetivosDS;
+    private int numVisita;
 
+    public int getNumVisita() {
+        return numVisita;
+    }
+
+    public void setNumVisita(int numVisita) {
+        this.numVisita = numVisita;
+    }
     public String getImagen() {
         return imagen;
     }
@@ -109,4 +117,5 @@ public class NecesidadDataEntity {
     public void setObjetivosDS(String objetivosDS) {
         this.objetivosDS = objetivosDS;
     }
+
 }

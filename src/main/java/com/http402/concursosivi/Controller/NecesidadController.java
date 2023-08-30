@@ -2,7 +2,9 @@ package com.http402.concursosivi.Controller;
 import com.http402.concursosivi.Entity.NecesidadDataEntity;
 import com.http402.concursosivi.Service.NecesidadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -77,4 +79,8 @@ public class NecesidadController {
         return palabrasClaveMasRepetidas;
     }
 
+    @PostMapping("/incrementar-visita")
+    public void incrementarVisita(@RequestParam Long id) {
+        necesidadService.incrementarVisita(id);
+    }
 }
