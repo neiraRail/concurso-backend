@@ -98,4 +98,14 @@ public class NecesidadDataEntity {
     private String comuna;
     private String palabrasClave;
     private String objetivosDS;
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    private String imagen;
 }
