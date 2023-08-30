@@ -22,7 +22,7 @@ public class Preload implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<NecesidadDataEntity> entities = parseCSVFile("csv/data.csv");
+        List<NecesidadDataEntity> entities = parseCSVFile("DATACONCURSO.csv");
         service.saveAll(entities);
     }
 
@@ -32,10 +32,19 @@ public class Preload implements CommandLineRunner {
         try (CSVReader reader = new CSVReaderBuilder(new FileReader(csvFilePath)).withSkipLines(1).build()) {
             String[] line;
             while ((line = reader.readNext()) != null) {
+
                 NecesidadDataEntity entity = new NecesidadDataEntity();
-                entity.setColumn1(line[0]); // Adjust indices based on your CSV
-                entity.setColumn2(line[1]);
-                // Set other fields similarly
+                entity.setNombreSolicitante(line[0]); // Adjust indices based on your CSV
+                entity.setRutSolicitante(line[1]);
+                entity.setCorreo(line[2]);
+                entity.setTituloNecesidad(line[3]);
+                entity.setDescripcionNecesidad(line[4]);
+                entity.setCategoria(line[5]);
+                entity.setTipoEntidad(line[6]);
+                entity.setComuna(line[7]);
+                entity.setPalabrasClave(line[8]);
+                entity.setObjetivosDS(line[9]);
+                entity.setImagen(line[10]);
                 entities.add(entity);
             }
         }

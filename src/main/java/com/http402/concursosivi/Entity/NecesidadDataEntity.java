@@ -1,11 +1,35 @@
 package com.http402.concursosivi.Entity;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import jakarta.persistence.*;
 
 @Entity
 public class NecesidadDataEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String nombreSolicitante;
+    private String rutSolicitante;
+    private String correo;
+    private String tituloNecesidad;
+    @Column(length = 1000)
+    private String descripcionNecesidad;
+    private String Categoria;
+    private String tipoEntidad;
+    private String comuna;
+    private String palabrasClave;
+    private String objetivosDS;
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    private String imagen;
+
     public String getNombreSolicitante() {
         return nombreSolicitante;
     }
@@ -85,27 +109,4 @@ public class NecesidadDataEntity {
     public void setObjetivosDS(String objetivosDS) {
         this.objetivosDS = objetivosDS;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String nombreSolicitante;
-    private String rutSolicitante;
-    private String correo;
-    private String tituloNecesidad;
-    private String descripcionNecesidad;
-    private String Categoria;
-    private String tipoEntidad;
-    private String comuna;
-    private String palabrasClave;
-    private String objetivosDS;
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
-    private String imagen;
 }
